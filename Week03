@@ -1,0 +1,34 @@
+
+#include <stdio.h>
+//5가지 배열중에서 N번째 수를 받아서 N번째 큰수를 출력
+//하나의 배열에 입력해서 안되나?
+int main() {
+    int numarr[25];
+    int tmp = 0;
+    int num;
+    int arr[5][5] = {{12,7,9,15,5},{13,8,11,19,6},
+    {21,10,26,31,16},{48,14,28,35,25},{52,20,32,1,49}};
+    
+    for(int i = 0; i < 5; i++) {
+        for(int k = 0; k< 5; k++) {
+                numarr[tmp++] = arr[i][k];
+        }
+    }
+    
+    for(int j = 0; j < 24; j++) {
+        for(int i = 0; i < 24 - j; i++) {
+            if(numarr[i] > numarr[i + 1]) {
+                tmp = numarr[i];
+                numarr[i] = numarr[i + 1];
+                numarr[i + 1] = tmp;
+            }
+            //printf("%d, %d \n", numarr[i], numarr[i + 1]);
+        }
+    }
+    for(int i = 0; i < 25; i++) {
+        printf("%d ", numarr[i]);
+    }
+    scanf("%d\n", &num);
+    printf("%d", numarr[num % 25]);
+    return 0;   
+}
